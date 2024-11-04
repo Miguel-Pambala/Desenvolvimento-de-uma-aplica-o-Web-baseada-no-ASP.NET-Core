@@ -1,0 +1,27 @@
+﻿@page
+@model lab5.Pages.CreateCompModel
+@{
+    ViewData["Title"] = "Adicionar Novo Componente";
+}
+
+<h2>Adicionar Novo Componente</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label>ID</label>
+        <input asp-for="NewComponent.Id" class="form-control" type="number" />
+    </div>
+    <div class="form-group">
+        <label>Nome</label>
+        <input asp-for="NewComponent.CmpName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Preço</label>
+        <input asp-for="NewComponent.Price" class="form-control" type="number" step="0.01" />
+    </div>
+    <div class="form-group">
+        <label>Descrição</label>
+        <input asp-for="NewComponent.Descr" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>

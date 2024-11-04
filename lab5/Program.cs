@@ -1,4 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using lab5.Data;
+using System;
+using System.IO;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//Configurar o DataDirectory para encontra a pasta Database 
+// Configurar o DataDirectory para apontar para a pasta Database no projeto
+var databasePath = Path.Combine(Directory.GetCurrentDirectory(), "Database");
+AppDomain.CurrentDomain.SetData("DataDirectory", databasePath);
+
+// Obter a string de conexão e configurar o DbContext para usar SQL Server
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<DBCtrl>(options =>
+    options.UseSqlServer(connectionString));
 
 // Add services to the container.
 builder.Services.AddRazorPages();
